@@ -31,14 +31,18 @@ class Player:
 
     def ReceiveCards(self, card):
         self.cards.append(card)
+    
+    def PickCard(self, singleCard):
+        pass    
+
 
 deckOfCards = Deck()
 deckOfCards.MakeDeck()
 deckOfCards.ShuffleDeck(deckOfCards.newDeck)
-deckOfCards.ShowDeck()
+# deckOfCards.ShowDeck()
 
 players = []
-numberOfPLayers = int(input('Enter the number of players'))
+numberOfPLayers = int(input('Enter the number of players : '))
 if (numberOfPLayers > 1 and numberOfPLayers < 6):
     for i  in range(numberOfPLayers):
         newPlayer = Player()
@@ -47,9 +51,22 @@ if (numberOfPLayers > 1 and numberOfPLayers < 6):
         for player in players:
             player.ReceiveCards(deckOfCards.newDeck.pop())
     
-    for player in players:
-        for card in player.cards:
-            print(str(card.name) + card.color)
-        print('\n')
+    # beginning of the game
+    show = False
+    playerIndex = 0
+    while(not show):
+        currentPlayer = players[playerIndex]
+        # The player needs to throw a card first and then pick a card
+        
+        playerIndex += 1
+        playerIndex = playerIndex % numberOfPLayers
+        
+
+    
+
+    # for player in players:
+    #     for card in player.cards:
+    #         print(str(card.name) + card.color)
+    #     print('\n')
 else:
     print('The game is not possible')
