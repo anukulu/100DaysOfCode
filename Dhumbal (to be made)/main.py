@@ -11,7 +11,7 @@ class Deck:
         self.colors = ['C', 'D', 'H', 'S']
         self.numbers = [i for i in range(1,14)]
     
-    def MakeDeck(self):
+    def MakeNewDeck(self):
         for color in self.colors:
             for number in self.numbers:
                 self.newDeck.append(Card(number, color))
@@ -19,6 +19,10 @@ class Deck:
     def ShuffleDeck(self, deck):
         random.shuffle(deck)
         return deck
+
+    def MakeDeck(self, randomDeck):
+        smallerDeck = self.ShuffleDeck(randomDeck)
+        self.newDeck = smallerDeck
 
     def ShowDeck(self):
         for card in self.newDeck:
@@ -33,13 +37,16 @@ class Player:
         self.cards.append(card)
     
     def PickCard(self, singleCard):
-        pass    
+        pass
+
+    def Throw(self):
+        pass
+          
 
 
 deckOfCards = Deck()
-deckOfCards.MakeDeck()
+deckOfCards.MakeNewDeck()
 deckOfCards.ShuffleDeck(deckOfCards.newDeck)
-# deckOfCards.ShowDeck()
 
 players = []
 numberOfPLayers = int(input('Enter the number of players : '))
@@ -51,13 +58,21 @@ if (numberOfPLayers > 1 and numberOfPLayers < 6):
         for player in players:
             player.ReceiveCards(deckOfCards.newDeck.pop())
     
-    # beginning of the game
+    # beginning the game
     show = False
     playerIndex = 0
+    throwncards = []
+    rounds = 0
     while(not show):
         currentPlayer = players[playerIndex]
         # The player needs to throw a card first and then pick a card
-        
+        if(rounds == 0):
+            # just throw the cards and pick one from deck
+            newCard = deckOfCards.newDeck.pop()
+            
+
+            
+
         playerIndex += 1
         playerIndex = playerIndex % numberOfPLayers
         
