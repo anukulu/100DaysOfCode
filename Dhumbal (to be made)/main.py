@@ -32,6 +32,10 @@ class Deck:
 class Player:
     def __init__(self):
         self.cards = []
+        self.handProbabilities = {
+                                  'Trio': 0.0022,
+                                  'PureSequence': 0.0024,
+                                  }
 
     def ReceiveCards(self, card):
         self.cards.append(card)
@@ -39,8 +43,15 @@ class Player:
     def PickCard(self, singleCard):
         pass
 
-    def Throw(self):
-        pass
+    def Throw(x = None):
+        if(x == None):  # For the first player
+            cardsInHand = self.BestArrangement()
+        else:
+            pass    # For all other rounds
+    def BestArrangement(self):
+        if (len(self.cards) > 3):
+            pass
+
           
 
 
@@ -61,13 +72,15 @@ if (numberOfPLayers > 1 and numberOfPLayers < 6):
     # beginning the game
     show = False
     playerIndex = 0
-    throwncards = []
+    cardsOnGround = []
     rounds = 0
     while(not show):
         currentPlayer = players[playerIndex]
         # The player needs to throw a card first and then pick a card
         if(rounds == 0):
             # just throw the cards and pick one from deck
+
+            thrownCards = currentPlayer.Throw()
             newCard = deckOfCards.newDeck.pop()
             
 
