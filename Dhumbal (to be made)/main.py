@@ -1,4 +1,5 @@
 import random
+import itertools
 
 class Card:
     def __init__(self, name, color):
@@ -50,7 +51,12 @@ class Player:
             pass    # For all other rounds
     def BestArrangement(self):
         if (len(self.cards) > 3):
-            pass
+            allCombinationsOfThree = list(itertools.combinations(cards, 3))
+            allCombinationsOfTwo = list(itertools.combinations(cards, 2))
+            allPossibleCombinations = allCombinationsOfThree + allCombinationsOfTwo
+            
+
+
 
           
 
@@ -82,6 +88,7 @@ if (numberOfPLayers > 1 and numberOfPLayers < 6):
 
             thrownCards = currentPlayer.Throw()
             newCard = deckOfCards.newDeck.pop()
+            
             
 
             
